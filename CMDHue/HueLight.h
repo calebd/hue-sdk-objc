@@ -26,6 +26,7 @@
 - (void)unpackDictionary:(NSDictionary *)dictionary;
 
 - (void)performBatchUpdates:(void (^) (HueLight *light))updates;
+- (void)performBatchUpdates:(void (^)(HueLight *))updates interval:(NSTimeInterval)interval;
 
 - (BOOL)isOn;
 - (void)turnOn;

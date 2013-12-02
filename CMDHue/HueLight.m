@@ -65,6 +65,14 @@
 }
 
 
+- (void)performBatchUpdates:(void (^)(HueLight *))updates interval:(NSTimeInterval)interval {
+    _ignoreChangesInSetters = YES;
+    updates(self);
+    _ignoreChangesInSetters = NO;
+    [self sendState:@(interval / 10.0)];
+}
+
+
 - (void)turnOff {
     self.on = NO;
 }
@@ -97,6 +105,11 @@
 #pragma mark - Private
 
 - (void)sendState {
+    [self sendState:nil];
+}
+
+
+- (void)sendState:(NSNumber *)transitionTime {
     
     // Break if we are ingnoring changes
     if (_ignoreChangesInSetters) {
@@ -111,6 +124,9 @@
     dictionary[@"hue"] = @((NSUInteger)(hue * 65535.0));
     dictionary[@"sat"] = @((NSUInteger)(saturation * 255.0));
     dictionary[@"bri"] = @((NSUInteger)(brightness * 255.0));
+    if (transitionTime) {
+        dictionary[@"transitiontime"] = transitionTime;
+    }
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:kNilOptions error:nil];
     
     NSString *path = [NSString stringWithFormat:@"/api/%@/lights/%@/state", self.bridge.client.username, self.remoteID];
