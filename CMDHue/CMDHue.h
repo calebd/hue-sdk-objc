@@ -6,8 +6,3 @@
 //  Copyright (c) 2013 Caleb Davenport. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface CMDHue : NSObject
-
-@end
