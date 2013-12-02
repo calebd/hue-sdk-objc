@@ -1,4 +1,7 @@
 PODS:
+  - libextobjc/EXTScope (0.3):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/RuntimeExtensions (0.3)
   - ReactiveCocoa (2.1.7):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
@@ -7,9 +10,11 @@ PODS:
   - ReactiveCocoa/no-arc (2.1.7)
 
 DEPENDENCIES:
+  - libextobjc/EXTScope
   - ReactiveCocoa
 
 SPEC CHECKSUMS:
+  libextobjc: 820a79dbbbc498611e04fffd07d2d52a5588e7ac
   ReactiveCocoa: 1117f7968c8667d2ca00b5aa47156fabcb56af75
 
 COCOAPODS: 0.28.0

@@ -10,6 +10,66 @@
 #import "CMDHueBridge.h"
 #import "CMDHueClient.h"
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <libextobjc/EXTScope.h>
+
+#pragma mark - C functions
+
+CMDHueLightAlert CMDHueLightAlertFromString(NSString *string) {
+    static dispatch_once_t token;
+    static NSDictionary *dictionary;
+    dispatch_once(&token, ^{
+        dictionary = @{
+            @"none" : @(CMDHueLightAlertNone),
+            @"lselect" : @(CMDHueLightAlertBreatheIndefinite),
+            @"select" : @(CMDHueLightAlertBreatheOnce)
+        };
+    });
+    return [dictionary[string] unsignedIntegerValue];
+}
+
+
+NSString *NSStringFromCMDHueLightAlert(CMDHueLightAlert alert) {
+    if (alert == CMDHueLightAlertNone) {
+        return @"none";
+    }
+    else if (alert == CMDHueLightAlertBreatheOnce) {
+        return @"select";
+    }
+    else if (alert == CMDHueLightAlertBreatheIndefinite) {
+        return @"lselect";
+    }
+    else {
+        return nil;
+    }
+}
+
+
+CMDHueLightEffect CMDHueLightEffectFromString(NSString *string) {
+    static dispatch_once_t token;
+    static NSDictionary *dictionary;
+    dispatch_once(&token, ^{
+        dictionary = @{
+            @"none" : @(CMDHueLightEffectNone),
+            @"colorloop" : @(CMDHueLightEffectColorLoop)
+        };
+    });
+    return [dictionary[string] unsignedIntegerValue];
+}
+
+
+NSString *NSStringFromCMDHueLightEffect(CMDHueLightEffect alert) {
+    if (alert == CMDHueLightEffectNone) {
+        return @"none";
+    }
+    else if (alert == CMDHueLightEffectColorLoop) {
+        return @"colorloop";
+    }
+    else {
+        return nil;
+    }
+}
+
 @interface CMDHueLight ()
 
 @property (nonatomic, strong) CMDHueBridge *bridge;
@@ -29,6 +89,12 @@
     if ((self = [super init])) {
         self.bridge = bridge;
         [self unpackDictionary:dictionary];
+        
+//        @weakify(self);
+//        [RACObserve(self, on) subscribeNext:^(id x) {
+//            @strongify(self);
+//            [self sendState];
+//        }];
     }
     return self;
 }
@@ -102,6 +168,18 @@
 }
 
 
+- (void)setEffect:(CMDHueLightEffect)effect {
+    _effect = effect;
+    [self sendState];
+}
+
+
+- (void)setAlert:(CMDHueLightAlert)alert {
+    _alert = alert;
+    [self sendState];
+}
+
+
 #pragma mark - Private
 
 - (void)sendState {
@@ -124,6 +202,8 @@
     dictionary[@"hue"] = @((NSUInteger)(hue * 65535.0));
     dictionary[@"sat"] = @((NSUInteger)(saturation * 255.0));
     dictionary[@"bri"] = @((NSUInteger)(brightness * 255.0));
+    dictionary[@"alert"] = NSStringFromCMDHueLightAlert(self.alert);
+    dictionary[@"effect"] = NSStringFromCMDHueLightEffect(self.effect);
     if (transitionTime) {
         dictionary[@"transitiontime"] = transitionTime;
     }

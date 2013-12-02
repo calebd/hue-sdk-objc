@@ -6,6 +6,21 @@
 //  Copyright (c) 2013 Caleb Davenport. All rights reserved.
 //
 
+typedef NS_ENUM(NSUInteger, CMDHueLightAlert) {
+    CMDHueLightAlertNone,
+    CMDHueLightAlertBreatheOnce,
+    CMDHueLightAlertBreatheIndefinite
+};
+CMDHueLightAlert CMDHueLightAlertFromString(NSString *string);
+NSString *NSStringFromCMDHueLightAlert(CMDHueLightAlert alert);
+
+typedef NS_ENUM(NSUInteger, CMDHueLightEffect) {
+    CMDHueLightEffectNone,
+    CMDHueLightEffectColorLoop
+};
+CMDHueLightEffect CMDHueLightEffectFromString(NSString *string);
+NSString *NSStringFromCMDHueLightEffect(CMDHueLightEffect alert);
+
 @class CMDHueBridge;
 
 @interface CMDHueLight : NSObject
@@ -20,6 +35,8 @@
 // These properties can be configured in a batch update
 @property (nonatomic, assign) BOOL on;
 @property (nonatomic, copy) UIColor *color;
+@property (nonatomic, assign) CMDHueLightAlert alert;
+@property (nonatomic, assign) CMDHueLightEffect effect;
 
 - (instancetype)initWithBridge:(CMDHueBridge *)bridge dictionary:(NSDictionary *)dictionary;
 
