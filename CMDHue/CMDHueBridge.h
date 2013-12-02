@@ -1,24 +1,24 @@
 //
-//  HueBridge.h
-//  HueBot
+//  CMDHueBridge.h
+//  CMDHue
 //
 //  Created by Caleb Davenport on 11/16/13.
-//  Copyright (c) 2013 SimpleAuth. All rights reserved.
+//  Copyright (c) 2013 Caleb Davenport. All rights reserved.
 //
 
-@class HueClient;
+@class CMDHueClient;
 @class RACSignal;
 
-@interface HueBridge : NSObject
+@interface CMDHueBridge : NSObject
 
-@property (nonatomic, readonly) HueClient *client;
+@property (nonatomic, readonly) CMDHueClient *client;
 @property (nonatomic, readonly) NSString *IPAddress;
 @property (nonatomic, readonly) NSURL *baseURL;
 
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic, readonly, copy) NSArray *lights;
 
-- (instancetype)initWithClient:(HueClient *)client address:(NSString *)address;
+- (instancetype)initWithClient:(CMDHueClient *)client address:(NSString *)address;
 
 - (RACSignal *)configuration;
 

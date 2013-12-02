@@ -1,16 +1,16 @@
 //
-//  HueLight.h
-//  HueBot
+//  CMDHueLight.h
+//  CMDHue
 //
 //  Created by Caleb Davenport on 12/1/13.
-//  Copyright (c) 2013 SimpleAuth. All rights reserved.
+//  Copyright (c) 2013 Caleb Davenport. All rights reserved.
 //
 
-@class HueBridge;
+@class CMDHueBridge;
 
-@interface HueLight : NSObject
+@interface CMDHueLight : NSObject
 
-@property (nonatomic, readonly, strong) HueBridge *bridge;
+@property (nonatomic, readonly, strong) CMDHueBridge *bridge;
 @property (nonatomic, readonly, copy) NSString *model;
 @property (nonatomic, readonly, copy) NSString *type;
 @property (nonatomic, readonly, copy) NSNumber *remoteID;
@@ -21,12 +21,12 @@
 @property (nonatomic, assign) BOOL on;
 @property (nonatomic, copy) UIColor *color;
 
-- (instancetype)initWithBridge:(HueBridge *)bridge dictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithBridge:(CMDHueBridge *)bridge dictionary:(NSDictionary *)dictionary;
 
 - (void)unpackDictionary:(NSDictionary *)dictionary;
 
-- (void)performBatchUpdates:(void (^) (HueLight *light))updates;
-- (void)performBatchUpdates:(void (^)(HueLight *))updates interval:(NSTimeInterval)interval;
+- (void)performBatchUpdates:(void (^) (CMDHueLight *light))updates;
+- (void)performBatchUpdates:(void (^)(CMDHueLight *))updates interval:(NSTimeInterval)interval;
 
 - (BOOL)isOn;
 - (void)turnOn;

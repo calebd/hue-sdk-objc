@@ -1,31 +1,31 @@
 //
-//  HueBridge.m
-//  HueBot
+//  CMDHueBridge.m
+//  CMDHue
 //
 //  Created by Caleb Davenport on 11/16/13.
-//  Copyright (c) 2013 SimpleAuth. All rights reserved.
+//  Copyright (c) 2013 Caleb Davenport. All rights reserved.
 //
 
-#import "HueBridge.h"
-#import "HueClient.h"
-#import "HueLight.h"
+#import "CMDHueBridge.h"
+#import "CMDHueClient.h"
+#import "CMDHueLight.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-@interface HueBridge ()
+@interface CMDHueBridge ()
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSArray *lights;
 
 @end
 
-@implementation HueBridge
+@implementation CMDHueBridge
 
 @synthesize baseURL = _baseURL;
 
 #pragma mark - Public
 
-- (instancetype)initWithClient:(HueClient *)client address:(NSString *)address {
+- (instancetype)initWithClient:(CMDHueClient *)client address:(NSString *)address {
     if ((self = [super init])) {
         _client = client;
         _IPAddress = address;
@@ -71,7 +71,7 @@
         NSMutableDictionary *dictionary = [NSMutableDictionary new];
         dictionary[@"id"] = tuple.first;
         [dictionary addEntriesFromDictionary:tuple.second];
-        return [[HueLight alloc] initWithBridge:self dictionary:dictionary];
+        return [[CMDHueLight alloc] initWithBridge:self dictionary:dictionary];
     }] array];
     
 }

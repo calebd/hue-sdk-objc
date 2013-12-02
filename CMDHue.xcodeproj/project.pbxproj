@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		3BF943CA184D099400DBB3FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF943C9184D099400DBB3FF /* Foundation.framework */; };
 		3BF943CF184D099400DBB3FF /* CMDHue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3BF943CE184D099400DBB3FF /* CMDHue.h */; };
-		3BF943F5184D0A3100DBB3FF /* HueClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF943F0184D0A3100DBB3FF /* HueClient.m */; };
-		3BF943F6184D0A3100DBB3FF /* HueBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF943F2184D0A3100DBB3FF /* HueBridge.m */; };
-		3BF943F7184D0A3100DBB3FF /* HueLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF943F4184D0A3100DBB3FF /* HueLight.m */; };
+		3BF943F5184D0A3100DBB3FF /* CMDHueClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF943F0184D0A3100DBB3FF /* CMDHueClient.m */; };
+		3BF943F6184D0A3100DBB3FF /* CMDHueBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF943F2184D0A3100DBB3FF /* CMDHueBridge.m */; };
+		3BF943F7184D0A3100DBB3FF /* CMDHueLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF943F4184D0A3100DBB3FF /* CMDHueLight.m */; };
 		3FB78738F7B64875B06CEBC0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4B9CC3018C4B85B9B0C752 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -36,12 +36,12 @@
 		3BF943CE184D099400DBB3FF /* CMDHue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMDHue.h; sourceTree = "<group>"; };
 		3BF943D7184D099400DBB3FF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3BF943DA184D099400DBB3FF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		3BF943EF184D0A3100DBB3FF /* HueClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueClient.h; sourceTree = "<group>"; };
-		3BF943F0184D0A3100DBB3FF /* HueClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueClient.m; sourceTree = "<group>"; };
-		3BF943F1184D0A3100DBB3FF /* HueBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBridge.h; sourceTree = "<group>"; };
-		3BF943F2184D0A3100DBB3FF /* HueBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBridge.m; sourceTree = "<group>"; };
-		3BF943F3184D0A3100DBB3FF /* HueLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueLight.h; sourceTree = "<group>"; };
-		3BF943F4184D0A3100DBB3FF /* HueLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueLight.m; sourceTree = "<group>"; };
+		3BF943EF184D0A3100DBB3FF /* CMDHueClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDHueClient.h; sourceTree = "<group>"; };
+		3BF943F0184D0A3100DBB3FF /* CMDHueClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDHueClient.m; sourceTree = "<group>"; };
+		3BF943F1184D0A3100DBB3FF /* CMDHueBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDHueBridge.h; sourceTree = "<group>"; };
+		3BF943F2184D0A3100DBB3FF /* CMDHueBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDHueBridge.m; sourceTree = "<group>"; };
+		3BF943F3184D0A3100DBB3FF /* CMDHueLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDHueLight.h; sourceTree = "<group>"; };
+		3BF943F4184D0A3100DBB3FF /* CMDHueLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDHueLight.m; sourceTree = "<group>"; };
 		5E4B9CC3018C4B85B9B0C752 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -91,12 +91,12 @@
 			isa = PBXGroup;
 			children = (
 				3BF943CE184D099400DBB3FF /* CMDHue.h */,
-				3BF943EF184D0A3100DBB3FF /* HueClient.h */,
-				3BF943F0184D0A3100DBB3FF /* HueClient.m */,
-				3BF943F1184D0A3100DBB3FF /* HueBridge.h */,
-				3BF943F2184D0A3100DBB3FF /* HueBridge.m */,
-				3BF943F3184D0A3100DBB3FF /* HueLight.h */,
-				3BF943F4184D0A3100DBB3FF /* HueLight.m */,
+				3BF943EF184D0A3100DBB3FF /* CMDHueClient.h */,
+				3BF943F0184D0A3100DBB3FF /* CMDHueClient.m */,
+				3BF943F1184D0A3100DBB3FF /* CMDHueBridge.h */,
+				3BF943F2184D0A3100DBB3FF /* CMDHueBridge.m */,
+				3BF943F3184D0A3100DBB3FF /* CMDHueLight.h */,
+				3BF943F4184D0A3100DBB3FF /* CMDHueLight.m */,
 				3BF943CC184D099400DBB3FF /* Supporting Files */,
 			);
 			path = CMDHue;
@@ -196,9 +196,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BF943F5184D0A3100DBB3FF /* HueClient.m in Sources */,
-				3BF943F7184D0A3100DBB3FF /* HueLight.m in Sources */,
-				3BF943F6184D0A3100DBB3FF /* HueBridge.m in Sources */,
+				3BF943F5184D0A3100DBB3FF /* CMDHueClient.m in Sources */,
+				3BF943F7184D0A3100DBB3FF /* CMDHueLight.m in Sources */,
+				3BF943F6184D0A3100DBB3FF /* CMDHueBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

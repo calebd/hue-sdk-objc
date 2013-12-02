@@ -1,18 +1,18 @@
 //
-//  HueClient.m
-//  HueBot
+//  CMDHueClient.m
+//  CMDHue
 //
 //  Created by Caleb Davenport on 11/16/13.
-//  Copyright (c) 2013 SimpleAuth. All rights reserved.
+//  Copyright (c) 2013 Caleb Davenport. All rights reserved.
 //
 
-#import "HueClient.h"
-#import "HueBridge.h"
-#import "HueLight.h"
+#import "CMDHueClient.h"
+#import "CMDHueBridge.h"
+#import "CMDHueLight.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-@implementation HueClient
+@implementation CMDHueClient
 
 #pragma mark - Public
 
@@ -31,10 +31,10 @@
      }]
      flattenMap:^(NSDictionary *dictionary) {
          NSString *address = dictionary[@"internalipaddress"];
-         HueBridge *bridge = [[HueBridge alloc] initWithClient:self address:address];
+         CMDHueBridge *bridge = [[CMDHueBridge alloc] initWithClient:self address:address];
          return [RACSignal return:bridge];
      }]
-     flattenMap:^(HueBridge *bridge) {
+     flattenMap:^(CMDHueBridge *bridge) {
          return [bridge configuration];
      }]
      collect];
@@ -46,7 +46,7 @@
      flattenMap:^(NSArray *bridges) {
          return [bridges.rac_sequence signal];
      }]
-     flattenMap:^(HueBridge *bridge) {
+     flattenMap:^(CMDHueBridge *bridge) {
          return [bridge.lights.rac_sequence signal];
      }]
      collect];
@@ -55,7 +55,7 @@
 
 - (RACSignal *)lightsByName {
     return [[self lights] map:^(NSArray *lights) {
-        RACSequence *sequence = [lights.rac_sequence map:^(HueLight *light) {
+        RACSequence *sequence = [lights.rac_sequence map:^(CMDHueLight *light) {
             return light.name;
         }];
         return [NSDictionary dictionaryWithObjects:lights forKeys:sequence.array];

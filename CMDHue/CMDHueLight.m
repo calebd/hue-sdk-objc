@@ -1,31 +1,31 @@
 //
-//  HueLight.m
-//  HueBot
+//  CMDHueLight.m
+//  CMDHue
 //
 //  Created by Caleb Davenport on 12/1/13.
-//  Copyright (c) 2013 SimpleAuth. All rights reserved.
+//  Copyright (c) 2013 Caleb Davenport. All rights reserved.
 //
 
-#import "HueLight.h"
-#import "HueBridge.h"
-#import "HueClient.h"
+#import "CMDHueLight.h"
+#import "CMDHueBridge.h"
+#import "CMDHueClient.h"
 
-@interface HueLight ()
+@interface CMDHueLight ()
 
-@property (nonatomic, strong) HueBridge *bridge;
+@property (nonatomic, strong) CMDHueBridge *bridge;
 @property (nonatomic, copy) NSString *model;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSNumber *remoteID;
 
 @end
 
-@implementation HueLight {
+@implementation CMDHueLight {
     BOOL _ignoreChangesInSetters;
 }
 
 #pragma mark - Public
 
-- (instancetype)initWithBridge:(HueBridge *)bridge dictionary:(NSDictionary *)dictionary {
+- (instancetype)initWithBridge:(CMDHueBridge *)bridge dictionary:(NSDictionary *)dictionary {
     if ((self = [super init])) {
         self.bridge = bridge;
         [self unpackDictionary:dictionary];
@@ -57,7 +57,7 @@
 }
 
 
-- (void)performBatchUpdates:(void (^) (HueLight *light))updates {
+- (void)performBatchUpdates:(void (^) (CMDHueLight *light))updates {
     _ignoreChangesInSetters = YES;
     updates(self);
     _ignoreChangesInSetters = NO;
@@ -65,7 +65,7 @@
 }
 
 
-- (void)performBatchUpdates:(void (^)(HueLight *))updates interval:(NSTimeInterval)interval {
+- (void)performBatchUpdates:(void (^)(CMDHueLight *))updates interval:(NSTimeInterval)interval {
     _ignoreChangesInSetters = YES;
     updates(self);
     _ignoreChangesInSetters = NO;
